@@ -38,10 +38,8 @@ def get_args():
 
 
 # --------------------------------------------------
-def main():
-    """ Main function starts here """
-
-    args = get_args()
+def parse_args(args):
+    """ Parse args to string with picnic format """
     words = args.words
     length = len(words)
     items = ''
@@ -63,6 +61,15 @@ def main():
         else:
             words[-1] = 'and ' + words[-1]
             items = f'{args.option} '.join(words)
+
+    return items
+
+# --------------------------------------------------
+def main():
+    """ Main function starts here """
+
+    args = get_args()
+    items = parse_args(args)
         
     print(f'You are bringing {items}')
 
