@@ -9,7 +9,7 @@ import re
 
 # --------------------------------------------------
 def get_args():
-    """Get command-line arguments"""
+    """ Get command-line arguments """
 
     parser = argparse.ArgumentParser(
         usage='crowsnest.py [-h] word',
