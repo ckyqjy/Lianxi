@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-from socket import *
 import os
 import struct
-from sys import byteorder
+import argparse
+from socket import *
 """
 Author: ckyqjy <ckyqjy@gmail.com>
 Purpose: Print ip header
@@ -75,10 +75,26 @@ def parse_flags_offset(int_num):
 
 
 # --------------------------------------------------
+def get_args():
+    """ Get command-line arguments """
+
+    parser = argparse.ArgumentParser(
+        usage='ip_header.py [-h] ip',
+        description='Print ip header structure per packet',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+    parser.add_argument('ip',
+                        metavar='ip',
+                        help='Ip address')
+
+    return parser.parse_args()
+
+
+# --------------------------------------------------
 def main():
     """ Main function starts here """
 
-    host = "192.168.25.5"
+    host = get_args().ip
     print(f"Listening at [{host}]")
     parse_packet(host)
 
